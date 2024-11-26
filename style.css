@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=League+Spartan:wght@100..900&family=Lexend+Deca:wght@100..900&family=Open+Sans&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Young+Serif&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* Variables para colore y fuentes */
+
+:root {
+    --primary: #4452fe;
+    --first-text:#000;
+    --grey: #5c5c5c;
+    --dark-bg: #181818;
+    --secondary-bg: #1e1e1e;
+    --white: #fff;
+    --light-text:#fff;
+
+    /* fuentes */
+    --font: "poppins","sans-serif";
+    --light: 400;
+    --medium: 500;
+    --bold: 700;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--light-text);
+    font-family: var(--font);
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+a {
+    color: var(--light-text);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    z-index: 2;
+}
+
+.logo {
+    width: 90px;
+}
+
+/* Configuración del menú */
+.menu {
+    padding: 15px 5px;
+    display: flex;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    gap: 30px;
+    transform: translateX(180%);
+    transition: all 0.5s ease-in-out;
+}
+
+.menu li {
+    border-bottom: 1px solid var(--white);
+}
+
+.menu-label {
+    order: 3;
+}
+
+.menu-label, #menu-toggle {
+    display: none;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-login {
+    border: 1px solid var(--white);
+    padding: 0.8rem 2.5rem;
+    border-radius: 10px;
+}
+
+.show {
+    transform: translateX(0);
+}
+
+@media (max-width: 450px) {
+    body {
+        overflow-x: hidden;        
+        /* Oculta todo el contenido excedente de los costados */
+    }
+
+    .menu {
+        /* Configuración del menú */
+        position: absolute;
+        z-index: 1;
+        top: 85px;
+        left: 20%;
+        right: 0;
+        width: 80%;
+        background-color: #0f1515;
+        border: 2px solid #64d3ff;
+        border-top: none;
+        border-right: none;
+        border-radius: 0 0 0 15px;
+        padding: 45px 30px;
+        gap: 25px;
+        transform: translateX(120%);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .menu li{
+        font-size: 20px;
+    }
+
+    .menu-label img {
+        height: 20px;
+        width: 25px;
+    }
+
+    /* Hago visible la imagen para acceder al menú */
+    .menu-label {
+        display: flex;
+    }
+
+    /* #menu-toggle:checked + .menu {
+        display: flex;
+    } */
+
+    /* Realiza la transición el menú al aparecer. */
+    .menu {
+        transform: translateX(110%);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    /* Aparece el menu al hacer click en la imagen */
+    #menu-toggle:checked + .menu {
+        transform: translateX(0%);
+        opacity: 1; 
+    }
+}
+
+@media (min-width:451px) {
+    .navbar {
+        justify-content: space-around;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .menu {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        order: 0;
+        width:70%;
+        transform: translateX(0%);
+    }
+
+    .menu-label {
+        display: none;
+    }
+
+    .menu>li {
+        font-size: 22px;
+    }
+}
